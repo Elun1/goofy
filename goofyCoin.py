@@ -19,7 +19,7 @@ class Block:
         self.timestamp = date.datetime.now()
         self.data = data
         self.prevHash = prevHash
-        self.hash = computeHash()
+        self.hash = self.computeHash()
 
     def computeHash(self):
         h = hashlib.sha256()
@@ -30,16 +30,15 @@ class Block:
         return h.hexdigest()
 
 def createGenesis():
-    return Block(0, 'Genesis block', "0")
+    return Block(0, 'Genesis block', '0')
 
-def newBlock():
+def newBlock(blockchain):
+    newData = 'this should be a transaction...'
+    blockchain.append(Block(blockchain[-1].index + 1,
+                            newData, 
+                            blockchain[-1].hash))
 
-def createCoin():
-    #only Goofy can create a coin.
-
-def transferCoin():
-
-
-#Goofy always exists
-goofy = newUser()
-
+if __name__ == '__main__':
+    #testcase
+    goofy = NewUser()
+    blockchain = [createGenesis()]
